@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar.astro';
 import Hero from '../../components/Hero.astro';
 import HowItWorks from '../../components/HowItWorks.astro';
 import Features from '../../components/Features.astro';
+import AppShowcase from '../../components/AppShowcase.astro';
 import Pricing from '../../components/Pricing.astro';
 import Statement from '../../components/Statement.astro';
 import Footer from '../../components/Footer.astro';
@@ -13,12 +14,17 @@ const lang = 'ja';
 const i = t(lang);
 ---
 
-<BaseLayout title="Translay — あらゆる画面を翻訳" description="スクリーンショットで2秒翻訳。アプリを離れずに。15以上の言語対応。AI搭載。" lang={lang}>
+<BaseLayout
+  title="Translay — iPhone 画面翻訳アプリ | スクリーンショットで 2 秒翻訳"
+  description="Translay は iOS 画面翻訳アプリです。iPhone の背面をダブルタップするだけでスクリーンショット翻訳が完了。日本語・英語・中国語・韓国語など 15 以上の言語に対応し、DeepL エンジンと AI 質問機能を搭載。OCR はデバイス上で実行されプライバシーも安心。"
+  lang={lang}
+>
   <Navbar lang={lang} nav={i.nav} />
   <main>
-    <Hero {...i.hero} />
+    <Hero lang={lang} {...i.hero} />
     <HowItWorks {...i.how} />
     <Features {...i.features} />
+    <AppShowcase {...i.showcase} />
     <Pricing {...i.pricing} />
     <Statement {...i.statement} />
   </main>

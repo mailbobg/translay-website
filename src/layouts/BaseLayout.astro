@@ -1,23 +1,75 @@
 ---
 import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
   title: string;
   description: string;
   lang?: string;
+  faqSchema?: Array<{ q: string; a: string }>;
 }
 
-const { title, description, lang = 'zh' } = Astro.props;
+const { title, description, lang = 'zh', faqSchema } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const langMeta: Record<string, { htmlLang: string }> = {
-  zh: { htmlLang: 'zh-Hans' },
-  en: { htmlLang: 'en' },
-  ja: { htmlLang: 'ja' },
-  ko: { htmlLang: 'ko' },
+const langMeta: Record<string, { htmlLang: string; ogLocale: string }> = {
+  zh: { htmlLang: 'zh-Hans', ogLocale: 'zh_CN' },
+  en: { htmlLang: 'en', ogLocale: 'en_US' },
+  ja: { htmlLang: 'ja', ogLocale: 'ja_JP' },
+  ko: { htmlLang: 'ko', ogLocale: 'ko_KR' },
 };
 
-const { htmlLang } = langMeta[lang] || langMeta.zh;
+const { htmlLang, ogLocale } = langMeta[lang] || langMeta.zh;
+
+// Localized app descriptions for JSON-LD
+const appDescriptions: Record<string, string> = {
+  zh: 'Translay 是一款 iOS 屏幕翻译应用。双击 iPhone 背面即可截屏翻译，支持 15+ 语言，搭载 DeepL 引擎和 AI 深度追问功能。',
+  en: 'Translay is an iOS screen translation app. Double-tap your iPhone back to screenshot and translate in 2 seconds. Supports 15+ languages with DeepL engine and AI follow-up questions.',
+  ja: 'Translay は iOS 画面翻訳アプリです。iPhone の背面をダブルタップするだけで 2 秒で画面を翻訳。15 以上の言語に対応し、DeepL エンジンと AI 質問機能を搭載。',
+  ko: 'Translay는 iOS 화면 번역 앱입니다. iPhone 뒷면을 더블 탭하면 2초 만에 화면을 번역합니다. 15개 이상 언어 지원, DeepL 엔진과 AI 질문 기능 탑재.',
+};
+
+// JSON-LD structured data for SoftwareApplication
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Translay",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "iOS 16+",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": appDescriptions[lang] || appDescriptions.en,
+  "screenshot": `${Astro.site}screenshots/home-en.png`,
+  "softwareVersion": "1.0",
+  "inLanguage": htmlLang,
+  "author": {
+    "@type": "Organization",
+    "name": "Translay",
+    "url": `${Astro.site}`
+  }
+};
+
+// FAQ structured data (for support pages)
+const faqJsonLd = faqSchema && faqSchema.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqSchema.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.a,
+    }
+  }))
+} : null;
+
+// All other locales for og:locale:alternate
+const alternateLocales = Object.entries(langMeta)
+  .filter(([code]) => code !== lang)
+  .map(([, meta]) => meta.ogLocale);
 ---
 
 <!doctype html>
@@ -26,6 +78,7 @@ const { htmlLang } = langMeta[lang] || langMeta.zh;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#0A0A0F" />
     <link rel="canonical" href={canonicalURL.href} />
 
     <!-- Alternate languages -->
@@ -33,7 +86,7 @@ const { htmlLang } = langMeta[lang] || langMeta.zh;
     <link rel="alternate" hreflang="en" href={`${Astro.site}en/`} />
     <link rel="alternate" hreflang="ja" href={`${Astro.site}ja/`} />
     <link rel="alternate" hreflang="ko" href={`${Astro.site}ko/`} />
-    <link rel="alternate" hreflang="x-default" href={`${Astro.site}zh/`} />
+    <link rel="alternate" hreflang="x-default" href={`${Astro.site}en/`} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
@@ -41,14 +94,31 @@ const { htmlLang } = langMeta[lang] || langMeta.zh;
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:site_name" content="Translay" />
+    <meta property="og:image" content={`${Astro.site}screenshots/home-en.png`} />
+    <meta property="og:image:width" content="1170" />
+    <meta property="og:image:height" content="2532" />
+    <meta property="og:locale" content={ogLocale} />
+    {alternateLocales.map(loc => (
+      <meta property="og:locale:alternate" content={loc} />
+    ))}
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${Astro.site}screenshots/home-en.png`} />
 
-    <!-- Favicon -->
+    <!-- Favicon & App icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- App Store Smart Banner -->
+    <meta name="apple-itunes-app" content="app-id=YOUR_APP_ID" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Preload hero image for LCP -->
+    <link rel="preload" as="image" href={lang === 'zh' ? '/screenshots/home-zh.png' : '/screenshots/home-en.png'} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -58,28 +128,102 @@ const { htmlLang } = langMeta[lang] || langMeta.zh;
       rel="stylesheet"
     />
 
+    <!-- JSON-LD: SoftwareApplication -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- JSON-LD: FAQPage (if applicable) -->
+    {faqJsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+    )}
+
+    <ViewTransitions />
     <title>{title}</title>
   </head>
   <body class="min-h-screen bg-bg-deep text-text-primary antialiased">
     <slot />
 
-    <!-- Scroll reveal script -->
-    <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('revealed');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-      );
+    <!-- noscript fallback: show content when JS disabled -->
+    <noscript>
+      <style>
+        [data-reveal] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
 
-      document.querySelectorAll('[data-reveal]').forEach((el) => {
-        observer.observe(el);
-      });
+    <!-- Animation engine -->
+    <script>
+      function initAnimations() {
+        // ── Scroll reveal observer ──
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.08, rootMargin: '0px 0px -60px 0px' }
+        );
+
+        document.querySelectorAll('[data-reveal]').forEach((el) => {
+          revealObserver.observe(el);
+        });
+
+        // ── Stagger children observer ──
+        const staggerObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                staggerObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
+        );
+
+        document.querySelectorAll('[data-stagger]').forEach((el) => {
+          staggerObserver.observe(el);
+        });
+
+        // ── Navbar scroll effect ──
+        const nav = document.querySelector('nav');
+        if (nav) {
+          const onScroll = () => {
+            nav.setAttribute('data-scrolled', window.scrollY > 32 ? 'true' : 'false');
+          };
+          window.addEventListener('scroll', onScroll, { passive: true });
+          onScroll();
+        }
+
+        // ── Parallax glow backgrounds ──
+        const parallaxEls = document.querySelectorAll('[data-parallax]');
+        if (parallaxEls.length > 0) {
+          let ticking = false;
+          window.addEventListener('scroll', () => {
+            if (!ticking) {
+              requestAnimationFrame(() => {
+                const scrollY = window.scrollY;
+                parallaxEls.forEach((el) => {
+                  const speed = parseFloat((el as HTMLElement).dataset.parallax || '0.15');
+                  (el as HTMLElement).style.transform = `translateY(${scrollY * speed}px)`;
+                });
+                ticking = false;
+              });
+              ticking = true;
+            }
+          }, { passive: true });
+        }
+      }
+
+      // Run on initial load
+      initAnimations();
+
+      // Re-run after View Transition navigations
+      document.addEventListener('astro:after-swap', initAnimations);
     </script>
   </body>
 </html>

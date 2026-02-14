@@ -9,7 +9,12 @@ const lang = 'zh';
 const i = t(lang);
 ---
 
-<BaseLayout title="支持 — Translay" description="Translay 使用帮助与常见问题" lang={lang}>
+<BaseLayout
+  title="使用帮助与常见问题 — Translay 屏幕翻译 App"
+  description="了解如何设置和使用 Translay 屏幕翻译应用。包含快速设置指南、Back Tap 快捷指令配置、翻译问题排查、语言支持列表和隐私安全说明。"
+  lang={lang}
+  faqSchema={i.support_page.faqs}
+>
   <Navbar lang={lang} nav={i.nav} />
   <SupportContent lang={lang} support_page={i.support_page} />
   <Footer lang={lang} footer={i.footer} />

@@ -1,9 +1,15 @@
 ---
 import type { Lang } from '../i18n/index';
+import PhoneFrame from './PhoneFrame.astro';
 
 interface FAQ {
   q: string;
   a: string;
+}
+
+interface PreviewScreenshot {
+  src: string;
+  alt: string;
 }
 
 interface Props {
@@ -11,7 +17,13 @@ interface Props {
   support_page: {
     title: string;
     setup_title: string;
+    setup_intro?: string;
     setup_steps: string[];
+    setup_screenshot?: string;
+    setup_screenshot_alt?: string;
+    preview_title?: string;
+    preview_desc?: string;
+    preview_screenshots?: PreviewScreenshot[];
     faq_title: string;
     faqs: FAQ[];
     contact_title: string;
@@ -29,7 +41,7 @@ const { lang, support_page: sp } = Astro.props;
 
     <!-- Quick Setup -->
     <div class="mb-16">
-      <h2 class="text-xl font-semibold mb-6 flex items-center gap-3">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-3">
         <div class="w-8 h-8 rounded-lg bg-blue-primary/10 flex items-center justify-center">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-primary">
             <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z"/><path d="m9 12 2 2 4-4"/>
@@ -37,15 +49,70 @@ const { lang, support_page: sp } = Astro.props;
         </div>
         {sp.setup_title}
       </h2>
-      <ol class="space-y-4">
-        {sp.setup_steps.map((step, i) => (
-          <li class="flex items-start gap-4 p-4 rounded-xl border border-white/5 bg-white/[0.02]">
-            <span class="shrink-0 w-7 h-7 rounded-full bg-blue-primary/10 text-blue-primary text-xs font-bold flex items-center justify-center">{i + 1}</span>
-            <span class="text-sm text-text-secondary leading-relaxed pt-0.5">{step}</span>
-          </li>
-        ))}
-      </ol>
+
+      {sp.setup_intro && (
+        <p class="text-sm text-text-secondary mb-6 ml-11">{sp.setup_intro}</p>
+      )}
+
+      <div class="grid lg:grid-cols-[1fr,auto] gap-8 items-start">
+        <ol class="space-y-4">
+          {sp.setup_steps.map((step, i) => (
+            <li class="flex items-start gap-4 p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+              <span class="shrink-0 w-7 h-7 rounded-full bg-blue-primary/10 text-blue-primary text-xs font-bold flex items-center justify-center">{i + 1}</span>
+              <span class="text-sm text-text-secondary leading-relaxed pt-0.5">{step}</span>
+            </li>
+          ))}
+        </ol>
+
+        {sp.setup_screenshot && (
+          <div class="hidden lg:block">
+            <PhoneFrame
+              src={sp.setup_screenshot}
+              alt={sp.setup_screenshot_alt || "Setup"}
+              class="w-[180px]"
+            />
+          </div>
+        )}
+      </div>
     </div>
+
+    <!-- Preview section -->
+    {sp.preview_title && sp.preview_screenshots && (
+      <div class="mb-16">
+        <h2 class="text-xl font-semibold mb-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-blue-primary/10 flex items-center justify-center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-primary">
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          {sp.preview_title}
+        </h2>
+
+        {sp.preview_desc && (
+          <p class="text-sm text-text-secondary mb-8 ml-11">{sp.preview_desc}</p>
+        )}
+
+        <div class="flex flex-wrap justify-center gap-8 items-end">
+          {sp.preview_screenshots.map((ps) => (
+            <div class="text-center">
+              <PhoneFrame
+                src={ps.src}
+                alt={ps.alt}
+                class="w-[180px] sm:w-[200px]"
+              />
+              <p class="text-xs text-text-ghost mt-3">{ps.alt}</p>
+            </div>
+          ))}
+          {sp.preview_screenshots.length === 2 && (
+            <div class="hidden sm:flex items-center text-blue-primary/40 absolute left-1/2 -translate-x-1/2">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          )}
+        </div>
+      </div>
+    )}
 
     <!-- FAQ -->
     <div class="mb-16">

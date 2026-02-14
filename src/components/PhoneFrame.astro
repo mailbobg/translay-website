@@ -1,0 +1,26 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  eager?: boolean;
+}
+
+const { src, alt, class: className = '', eager = false } = Astro.props;
+---
+
+<div class:list={["relative inline-block", className]}>
+  <div class="relative rounded-[2.2rem] border-[5px] border-[#1a1a2e] bg-[#1a1a2e] shadow-xl shadow-black/30 overflow-hidden">
+    <!-- Dynamic Island -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 z-10 w-[80px] h-[22px] bg-[#1a1a2e] rounded-b-xl"></div>
+    <!-- Screenshot -->
+    <img
+      src={src}
+      alt={alt}
+      class="w-full h-auto rounded-[1.8rem]"
+      loading={eager ? "eager" : "lazy"}
+    />
+    <!-- Bottom bar -->
+    <div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-[90px] h-[3px] bg-white/20 rounded-full z-10"></div>
+  </div>
+</div>

@@ -9,7 +9,12 @@ const lang = 'ko';
 const i = t(lang);
 ---
 
-<BaseLayout title="지원 — Translay" description="Translay 도움말 및 자주 묻는 질문" lang={lang}>
+<BaseLayout
+  title="도움말 및 자주 묻는 질문 — Translay 화면 번역 앱"
+  description="Translay 화면 번역 앱의 설정 방법과 사용법을 안내합니다. 빠른 설정 가이드, 뒷면 탭 단축어 설정, 번역 문제 해결, 지원 언어 목록, 개인정보 보호 정보를 포함합니다."
+  lang={lang}
+  faqSchema={i.support_page.faqs}
+>
   <Navbar lang={lang} nav={i.nav} />
   <SupportContent lang={lang} support_page={i.support_page} />
   <Footer lang={lang} footer={i.footer} />

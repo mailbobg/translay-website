@@ -7,9 +7,9 @@
   "hero": {
     "title_1": "Translate any screen.",
     "title_2": "Stay where you are.",
-    "subtitle": "Screenshot · Translate · 2 seconds · Done",
+    "subtitle": "Double-tap your iPhone's back to translate foreign text on screen in 2 seconds. No app switching, no copy-paste — translations overlay right on the original interface.",
     "cta": "Download Free",
-    "cta_sub": "iOS 16+  ·  5 free translations per day"
+    "cta_sub": "iOS 16+  ·  5 free translations  ·  No ads"
   },
   "how": {
     "label": "HOW IT WORKS",
@@ -17,17 +17,20 @@
       {
         "num": "01",
         "title": "Tap the back",
-        "desc": "Double-tap your iPhone's back to capture a screenshot instantly"
+        "desc": "Double-tap the back of your iPhone to trigger a screenshot via iOS Shortcuts. Works the same whether you're gaming, shopping, or browsing social media.",
+        "screenshot": "/screenshots/shortcut.png"
       },
       {
         "num": "02",
         "title": "AI translates",
-        "desc": "OCR detects text, DeepL engine delivers precise translations"
+        "desc": "On-device OCR accurately detects all text on screen. The DeepL engine translates everything into your target language — the whole process takes about 2 seconds.",
+        "screenshot": "/screenshots/home-en.png"
       },
       {
         "num": "03",
         "title": "Read & ask",
-        "desc": "Translation overlays the original. Ask AI for deeper understanding"
+        "desc": "Translations overlay the original text while preserving the interface layout. Confused about something? Ask the AI for context, cultural notes, or grammar explanations.",
+        "screenshot": "/screenshots/detail.png"
       }
     ]
   },
@@ -35,20 +38,61 @@
     "label": "FEATURES",
     "items": [
       {
-        "title": "Immersive overlay",
-        "desc": "Translation covers original text precisely, preserving the interface layout"
+        "title": "Immersive translation overlay",
+        "desc": "Translations are placed precisely over original text, preserving the interface layout perfectly. This isn't simple text replacement — Translay analyzes each line's position and size to present translations in the most natural way. It feels less like a translation tool and more like the content was written in your language all along.",
+        "screenshot": "/screenshots/shortcut.png",
+        "screenshot_alt": "Shortcut trigger for translation"
       },
       {
-        "title": "15+ languages",
-        "desc": "Chinese, Japanese, Korean, Russian, German, French, Spanish & more"
+        "title": "15+ languages supported",
+        "desc": "Freely translate between Chinese, Japanese, Korean, English, Russian, German, French, Spanish, Italian, Portuguese and more. Powered by the DeepL engine — consistently top-rated in professional translation benchmarks. Whether it's a Japanese game UI, a Korean shopping page, or French news, Translay handles it all.",
+        "screenshot": "/screenshots/settings.png",
+        "screenshot_alt": "Language settings"
       },
       {
         "title": "AI deep questions",
-        "desc": "Beyond translation — ask follow-up questions to understand context deeply"
+        "desc": "Translation is just the beginning. When you encounter something confusing, ask the AI directly. It can explain cultural context, analyze sentence structure, offer synonyms, and even decode slang or internet lingo. Like having a multilingual tutor in your pocket.",
+        "screenshot": "/screenshots/ai-chat.png",
+        "screenshot_alt": "AI chat interface"
       },
       {
         "title": "Privacy first",
-        "desc": "OCR runs entirely on-device. No images leave your phone. Ever"
+        "desc": "OCR text recognition runs entirely on-device — your screenshots never leave your phone. Translation requests are encrypted end-to-end, and we store nothing. Your screen content remains yours and yours alone."
+      }
+    ]
+  },
+  "showcase": {
+    "label": "APP PREVIEW",
+    "items": [
+      {
+        "src": "/screenshots/home-en.png",
+        "title": "Home overview",
+        "desc": "Clean, intuitive home screen — start translating with one tap"
+      },
+      {
+        "src": "/screenshots/shortcut.png",
+        "title": "Shortcut trigger",
+        "desc": "Use iOS Shortcuts — double-tap your back to screenshot and translate"
+      },
+      {
+        "src": "/screenshots/history.png",
+        "title": "Translation history",
+        "desc": "All translations saved automatically for easy lookup later"
+      },
+      {
+        "src": "/screenshots/detail.png",
+        "title": "Translation detail",
+        "desc": "Side-by-side original and translation, with line-by-line analysis"
+      },
+      {
+        "src": "/screenshots/ai-chat.png",
+        "title": "AI deep chat",
+        "desc": "Context-aware AI conversations based on your translated content"
+      },
+      {
+        "src": "/screenshots/settings.png",
+        "title": "Flexible settings",
+        "desc": "Customize translation language, AI model, and more"
       }
     ]
   },
@@ -56,14 +100,14 @@
     "label": "PRICING",
     "free": {
       "name": "Free",
-      "features": ["5 translations / day", "5 AI questions / day", "All 15+ languages"],
+      "features": ["5 free translations", "5 AI questions", "All 15+ languages", "Translation history", "On-device OCR"],
       "price": "$0",
       "cta": "Download Free"
     },
     "pro": {
       "name": "Pro",
       "badge": "PRO",
-      "features": ["Unlimited translations", "Unlimited AI questions", "Priority server"],
+      "features": ["Unlimited translations", "Unlimited AI questions", "Priority server", "Early access to new features", "Priority email support"],
       "price": "TBD",
       "period": "/year",
       "cta": "Upgrade to Pro"
@@ -83,38 +127,51 @@
   "support_page": {
     "title": "Support Center",
     "setup_title": "Quick Setup",
+    "setup_intro": "Get started with Translay in just 3 minutes.",
     "setup_steps": [
       "Download Translay from the App Store",
       "Open Translay and select your target language",
-      "Go to Settings → Accessibility → Touch → Back Tap",
+      "Go to iPhone Settings → Accessibility → Touch → Back Tap",
       "Set \"Double Tap\" to the Translay shortcut",
-      "In any app, double-tap the back of your iPhone to translate"
+      "In any app, double-tap the back of your iPhone to translate!"
+    ],
+    "setup_screenshot": "/screenshots/shortcut.png",
+    "setup_screenshot_alt": "Shortcut setup example",
+    "preview_title": "See it in action",
+    "preview_desc": "Once set up, double-tap your phone's back in any app to see translations overlaid instantly:",
+    "preview_screenshots": [
+      { "src": "/screenshots/home-en.png", "alt": "Before — English interface" },
+      { "src": "/screenshots/detail.png", "alt": "After — translated overlay" }
     ],
     "faq_title": "Frequently Asked Questions",
     "faqs": [
       {
         "q": "Translation isn't accurate?",
-        "a": "Translay uses the DeepL translation engine for high-quality translations across 15+ languages. Try the AI follow-up feature for more accurate understanding."
+        "a": "Translay uses the DeepL translation engine, one of the highest-rated engines in professional benchmarks. If specialized terms aren't translating well, try the AI follow-up feature — the AI uses context to provide more precise explanations."
       },
       {
         "q": "Which languages are supported?",
-        "a": "Chinese, English, Japanese, Korean, Russian, German, French, Spanish, and 15+ mainstream languages with more being added."
+        "a": "Chinese, English, Japanese, Korean, Russian, German, French, Spanish, Italian, Portuguese, and 15+ mainstream languages with more being added continuously."
       },
       {
         "q": "Free quota used up?",
-        "a": "The free version provides 5 translations and 5 AI questions per day. Quotas reset daily. Upgrade to Pro for unlimited use."
+        "a": "The free version provides 5 translations and 5 AI questions per day. Quotas reset automatically at midnight. Upgrade to Pro for unlimited use."
       },
       {
         "q": "Translation not responding?",
-        "a": "Please check: 1) Network connection 2) Back Tap shortcut is set correctly 3) Try reopening the Translay app."
+        "a": "Please check step by step: 1) Confirm your network connection; 2) Go to Settings → Accessibility → Touch → Back Tap to verify the shortcut is set correctly; 3) Try reopening the Translay app. If the issue persists, please contact our support team."
+      },
+      {
+        "q": "Is my privacy safe?",
+        "a": "OCR text recognition runs entirely on-device — screenshots are never uploaded to any server. Translation requests use encrypted transmission, and we store no translation content. See our Privacy Policy for full details."
       },
       {
         "q": "How to cancel subscription?",
-        "a": "Go to iPhone Settings → Apple ID → Subscriptions to manage or cancel your Translay Pro subscription."
+        "a": "Go to iPhone Settings → Apple ID → Subscriptions to manage or cancel your Translay Pro subscription. After cancellation, Pro features remain available until the end of the current billing period."
       }
     ],
     "contact_title": "Contact Us",
-    "contact_desc": "For other questions, reach out via email:",
-    "contact_email": "support@translay.app"
+    "contact_desc": "For other questions, reach out via email. We typically respond within 24 hours:",
+    "contact_email": "bob.wang@imyway.cn"
   }
 }

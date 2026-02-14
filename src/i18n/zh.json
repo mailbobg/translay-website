@@ -7,9 +7,9 @@
   "hero": {
     "title_1": "翻译任何屏幕",
     "title_2": "不离开当前 App",
-    "subtitle": "截屏 · 翻译 · 2 秒完成",
+    "subtitle": "双击手机背面，2 秒内将屏幕上的外语翻译为母语。无需切换窗口，无需复制粘贴，翻译直接覆盖在原始界面上。",
     "cta": "免费下载",
-    "cta_sub": "iOS 16+  ·  每天 5 次免费翻译"
+    "cta_sub": "iOS 16+  ·  每天 5 次免费翻译  ·  无广告"
   },
   "how": {
     "label": "使用方式",
@@ -17,17 +17,20 @@
       {
         "num": "01",
         "title": "轻点截屏",
-        "desc": "连按手机背面两下，自动截取当前屏幕"
+        "desc": "连按手机背面两下，通过 iOS 快捷指令自动截取当前屏幕。无论你在游戏、购物还是浏览社交媒体，操作方式完全相同。",
+        "screenshot": "/screenshots/shortcut.png"
       },
       {
         "num": "02",
-        "title": "AI 翻译",
-        "desc": "OCR 识别文字，DeepL 引擎精准翻译"
+        "title": "AI 识别翻译",
+        "desc": "设备端 OCR 精准识别屏幕文字，DeepL 翻译引擎将内容翻译为你的目标语言。整个过程只需约 2 秒。",
+        "screenshot": "/screenshots/home-zh.png"
       },
       {
         "num": "03",
         "title": "沉浸阅读",
-        "desc": "译文覆盖原文位置，可追问 AI 深度理解"
+        "desc": "译文直接覆盖在原文位置，保留界面原始布局。看不懂的地方还可以追问 AI，获取语境解释和文化背景。",
+        "screenshot": "/screenshots/detail.png"
       }
     ]
   },
@@ -35,20 +38,61 @@
     "label": "核心功能",
     "items": [
       {
-        "title": "沉浸式翻译",
-        "desc": "译文精准覆盖原文位置，保留原始界面布局，无需切换窗口"
+        "title": "沉浸式翻译覆盖",
+        "desc": "译文精准覆盖原文位置，完美保留原始界面布局。不是简单的文字替换 — Translay 会分析每一行文字的位置和大小，将翻译结果以最自然的方式呈现。你甚至感觉不到这是一个翻译工具，它就像原生语言一样融入界面。",
+        "screenshot": "/screenshots/shortcut.png",
+        "screenshot_alt": "快捷指令触发翻译"
       },
       {
-        "title": "15+ 语言支持",
-        "desc": "中日韩英俄德法西等主流语言，DeepL 引擎确保翻译质量"
+        "title": "支持 15+ 语言",
+        "desc": "中日韩英俄德法西意葡等 15 种以上主流语言之间自由翻译。搭载 DeepL 翻译引擎，在专业测评中始终名列前茅。无论是日文游戏界面、韩文购物页面，还是法文新闻，都能准确翻译。",
+        "screenshot": "/screenshots/settings.png",
+        "screenshot_alt": "语言设置界面"
       },
       {
         "title": "AI 深度追问",
-        "desc": "不只翻译文字，还能基于翻译内容智能问答，深入理解语境"
+        "desc": "翻译只是第一步。遇到不理解的内容，可以直接向 AI 提问。它能解释文化背景、分析句子结构、提供同义表达，甚至帮你理解俚语和网络用语。就像随身携带一位精通多语言的老师。",
+        "screenshot": "/screenshots/ai-chat.png",
+        "screenshot_alt": "AI 智能问答"
       },
       {
-        "title": "隐私优先",
-        "desc": "OCR 完全在设备端运行，图片不离开手机，翻译文本加密传输"
+        "title": "隐私优先设计",
+        "desc": "OCR 文字识别完全在设备端运行，你的截图永远不会离开手机。翻译请求采用端到端加密传输，我们不存储任何翻译内容。你的屏幕内容，只有你能看到。"
+      }
+    ]
+  },
+  "showcase": {
+    "label": "应用预览",
+    "items": [
+      {
+        "src": "/screenshots/home-zh.png",
+        "title": "首页概览",
+        "desc": "简洁直观的首页设计，一键即可开始翻译"
+      },
+      {
+        "src": "/screenshots/shortcut.png",
+        "title": "快捷指令触发",
+        "desc": "通过 iOS 快捷指令，双击背面即刻截屏翻译"
+      },
+      {
+        "src": "/screenshots/history.png",
+        "title": "翻译记录",
+        "desc": "所有翻译自动保存，随时回顾查找"
+      },
+      {
+        "src": "/screenshots/detail.png",
+        "title": "翻译详情",
+        "desc": "原文与译文对照查看，支持逐句分析"
+      },
+      {
+        "src": "/screenshots/ai-chat.png",
+        "title": "AI 深度问答",
+        "desc": "基于翻译内容智能对话，深入理解语境"
+      },
+      {
+        "src": "/screenshots/settings.png",
+        "title": "灵活设置",
+        "desc": "自定义翻译语言、AI 模型等个性化选项"
       }
     ]
   },
@@ -56,14 +100,14 @@
     "label": "价格方案",
     "free": {
       "name": "免费版",
-      "features": ["每天 5 次翻译", "每天 5 次 AI 问答", "全部 15+ 语言"],
+      "features": ["5 次免费翻译", "5 次 AI 问答", "全部 15+ 语言", "翻译记录保存", "设备端 OCR"],
       "price": "¥0",
       "cta": "免费下载"
     },
     "pro": {
       "name": "Pro",
       "badge": "PRO",
-      "features": ["无限翻译次数", "无限 AI 问答", "优先服务器"],
+      "features": ["无限翻译次数", "无限 AI 问答", "优先服务器", "优先体验新功能", "邮件优先支持"],
       "price": "待定",
       "period": "/年",
       "cta": "升级 Pro"
@@ -83,38 +127,51 @@
   "support_page": {
     "title": "支持中心",
     "setup_title": "快速设置",
+    "setup_intro": "只需 3 分钟，即可设置完成并开始使用 Translay。",
     "setup_steps": [
       "从 App Store 下载 Translay",
-      "打开 Translay，选择目标翻译语言",
-      "进入「设置 → 辅助功能 → 触控 → 轻点背面」",
+      "打开 Translay，选择你的目标翻译语言",
+      "进入 iPhone「设置 → 辅助功能 → 触控 → 轻点背面」",
       "将「轻点两下」设置为 Translay 快捷指令",
-      "在任意 App 中，双击手机背面即可翻译"
+      "在任意 App 中，双击手机背面即可翻译！"
+    ],
+    "setup_screenshot": "/screenshots/shortcut.png",
+    "setup_screenshot_alt": "快捷指令设置示例",
+    "preview_title": "效果预览",
+    "preview_desc": "设置完成后，在任何应用中双击手机背面，就能看到翻译覆盖效果：",
+    "preview_screenshots": [
+      { "src": "/screenshots/home-en.png", "alt": "翻译前 — 英文界面" },
+      { "src": "/screenshots/detail.png", "alt": "翻译后 — 中文覆盖" }
     ],
     "faq_title": "常见问题",
     "faqs": [
       {
         "q": "翻译不准确怎么办？",
-        "a": "Translay 使用 DeepL 翻译引擎，支持 15+ 语言的高质量翻译。如果翻译不理想，可尝试使用 AI 追问功能获取更准确的理解。"
+        "a": "Translay 使用 DeepL 翻译引擎，这是全球专业评测中排名最高的翻译引擎之一。如果某些专业术语翻译不理想，可以使用 AI 追问功能，AI 会根据上下文给出更精确的解释。"
       },
       {
         "q": "支持哪些语言？",
-        "a": "支持中文、英文、日文、韩文、俄文、德文、法文、西班牙文等 15 种以上主流语言，更多语言持续添加中。"
+        "a": "支持中文、英文、日文、韩文、俄文、德文、法文、西班牙文、意大利文、葡萄牙文等 15 种以上主流语言，更多语言持续添加中。"
       },
       {
         "q": "免费额度用完了怎么办？",
-        "a": "免费版每天提供 5 次翻译和 5 次 AI 问答。额度每天重置。如需无限使用，可升级到 Pro 版。"
+        "a": "免费版每天提供 5 次翻译和 5 次 AI 问答，额度每天凌晨自动重置。如需无限使用，可升级到 Pro 版。"
       },
       {
         "q": "翻译没有反应？",
-        "a": "请确认：1) 网络连接正常 2) 已正确设置「轻点背面」快捷指令 3) 尝试重新打开 Translay App。"
+        "a": "请逐步检查：1) 确认网络连接正常；2) 打开「设置 → 辅助功能 → 触控 → 轻点背面」确认快捷指令设置正确；3) 尝试重新打开 Translay App。如果问题仍然存在，请联系我们的技术支持。"
+      },
+      {
+        "q": "我的隐私安全吗？",
+        "a": "OCR 文字识别完全在设备端运行，截图永远不会上传到服务器。翻译请求采用加密传输，我们不存储任何翻译内容。你可以在隐私政策中查看详细说明。"
       },
       {
         "q": "如何取消订阅？",
-        "a": "进入 iPhone「设置 → Apple ID → 订阅」中管理或取消 Translay Pro 订阅。"
+        "a": "进入 iPhone「设置 → Apple ID → 订阅」中管理或取消 Translay Pro 订阅。取消后，Pro 功能将在当前订阅期结束前仍然可用。"
       }
     ],
     "contact_title": "联系我们",
-    "contact_desc": "如有其他问题，请通过邮件联系我们：",
-    "contact_email": "support@translay.app"
+    "contact_desc": "如有其他问题，请通过邮件联系我们，我们通常在 24 小时内回复：",
+    "contact_email": "bob.wang@imyway.cn"
   }
 }

@@ -9,7 +9,12 @@ const lang = 'en';
 const i = t(lang);
 ---
 
-<BaseLayout title="Support — Translay" description="Help and FAQ for Translay" lang={lang}>
+<BaseLayout
+  title="Help & FAQ — Translay Screen Translator App"
+  description="Learn how to set up and use Translay, the iOS screen translation app. Includes quick setup guide, Back Tap shortcut configuration, translation troubleshooting, supported languages, and privacy information."
+  lang={lang}
+  faqSchema={i.support_page.faqs}
+>
   <Navbar lang={lang} nav={i.nav} />
   <SupportContent lang={lang} support_page={i.support_page} />
   <Footer lang={lang} footer={i.footer} />

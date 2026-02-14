@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar.astro';
 import Hero from '../../components/Hero.astro';
 import HowItWorks from '../../components/HowItWorks.astro';
 import Features from '../../components/Features.astro';
+import AppShowcase from '../../components/AppShowcase.astro';
 import Pricing from '../../components/Pricing.astro';
 import Statement from '../../components/Statement.astro';
 import Footer from '../../components/Footer.astro';
@@ -13,12 +14,17 @@ const lang = 'ko';
 const i = t(lang);
 ---
 
-<BaseLayout title="Translay — 모든 화면을 번역" description="스크린샷으로 2초 만에 번역. 앱을 떠나지 않고. 15개 이상 언어. AI 기반." lang={lang}>
+<BaseLayout
+  title="Translay — 아이폰 화면 번역 앱 | 스크린샷으로 2초 만에 번역"
+  description="Translay는 iOS 화면 번역 앱입니다. iPhone 뒷면을 더블 탭하면 스크린샷 번역이 바로 완료됩니다. 한국어·영어·일본어·중국어 등 15개 이상 언어 지원, DeepL 엔진과 AI 질문 기능 탑재. OCR은 기기에서만 실행되어 프라이버시도 안전합니다."
+  lang={lang}
+>
   <Navbar lang={lang} nav={i.nav} />
   <main>
-    <Hero {...i.hero} />
+    <Hero lang={lang} {...i.hero} />
     <HowItWorks {...i.how} />
     <Features {...i.features} />
+    <AppShowcase {...i.showcase} />
     <Pricing {...i.pricing} />
     <Statement {...i.statement} />
   </main>

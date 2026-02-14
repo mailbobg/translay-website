@@ -20,12 +20,12 @@ const { label, free, pro } = Astro.props;
 <section id="pricing" class="py-24 lg:py-32">
   <div class="mx-auto max-w-6xl px-6">
     <div data-reveal class="mb-16">
-      <span class="text-xs font-mono tracking-widest text-text-ghost uppercase">{label}</span>
+      <h2 class="text-xs font-mono tracking-widest text-text-ghost uppercase">{label}</h2>
     </div>
 
-    <div class="grid sm:grid-cols-2 gap-6 max-w-3xl">
+    <div class="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
       <!-- Free plan -->
-      <div data-reveal class="relative p-8 rounded-2xl border border-white/5 bg-white/[0.02]">
+      <div data-reveal="left" class="relative p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover-lift">
         <h3 class="text-2xl font-bold mb-6">{free.name}</h3>
 
         <ul class="space-y-3 mb-8">
@@ -52,7 +52,7 @@ const { label, free, pro } = Astro.props;
       </div>
 
       <!-- Pro plan -->
-      <div data-reveal class="relative p-8 rounded-2xl border border-border-blue bg-blue-primary/[0.04] glow-blue" style="transition-delay: 0.1s">
+      <div data-reveal="right" class="relative p-8 rounded-2xl border border-border-blue bg-blue-primary/[0.04] glow-blue hover-lift">
         <!-- Badge -->
         <div class="absolute top-6 right-6">
           <span class="text-[10px] font-mono font-bold tracking-widest bg-blue-primary text-white px-3 py-1 rounded-full">
