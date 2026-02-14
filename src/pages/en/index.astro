@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Hero from '../../components/Hero.astro';
+import HowItWorks from '../../components/HowItWorks.astro';
+import Features from '../../components/Features.astro';
+import Pricing from '../../components/Pricing.astro';
+import Statement from '../../components/Statement.astro';
+import Footer from '../../components/Footer.astro';
+import { t } from '../../i18n/index';
+
+const lang = 'en';
+const i = t(lang);
+---
+
+<BaseLayout title="Translay — Translate any screen" description="Screenshot to translate in 2 seconds. Stay in your app. 15+ languages. AI-powered." lang={lang}>
+  <Navbar lang={lang} nav={i.nav} />
+  <main>
+    <Hero {...i.hero} />
+    <HowItWorks {...i.how} />
+    <Features {...i.features} />
+    <Pricing {...i.pricing} />
+    <Statement {...i.statement} />
+  </main>
+  <Footer lang={lang} footer={i.footer} />
+</BaseLayout>

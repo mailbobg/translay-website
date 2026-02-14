@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import LegalPage from '../../components/LegalPage.astro';
+import Footer from '../../components/Footer.astro';
+import { t } from '../../i18n/index';
+
+const lang = 'ko';
+const i = t(lang);
+---
+
+<BaseLayout title="개인정보 처리방침 — Translay" description="Translay 개인정보 처리방침" lang={lang}>
+  <Navbar lang={lang} nav={i.nav} />
+  <LegalPage title="개인정보 처리방침" lastUpdated="최종 업데이트: 2026년 2월">
+    <h2>개요</h2>
+    <p>Translay(이하 "당사")는 사용자의 개인정보를 보호하기 위해 최선을 다하고 있습니다. 본 개인정보 처리방침은 Translay 앱 사용 시 정보 처리 방법을 설명합니다.</p>
+
+    <h2>정보 수집 및 이용</h2>
+    <h3>로컬 처리</h3>
+    <p>Translay의 OCR(광학 문자 인식) 기능은 전적으로 기기에서 실행됩니다. 스크린샷과 이미지는 어떤 서버에도 업로드되지 않습니다.</p>
+
+    <h3>번역 서비스</h3>
+    <p>번역을 제공하기 위해 OCR로 인식한 텍스트(텍스트만, 이미지 제외)를 암호화된 채널을 통해 번역 서비스(DeepL)로 전송합니다. 텍스트는 저장되거나 다른 목적으로 사용되지 않습니다.</p>
+
+    <h3>AI 질문</h3>
+    <p>AI 질문 기능을 사용하면 번역 내용이 암호화된 채널을 통해 AI 서비스로 전송됩니다. 대화 내용은 저장하지 않습니다.</p>
+
+    <h3>이용 데이터</h3>
+    <p>무료 할당량 관리를 위해 iCloud를 통해 이용 횟수 카운터만 동기화합니다. 개인 식별 정보를 수집, 저장 또는 공유하지 않습니다.</p>
+
+    <h2>데이터 보안</h2>
+    <p>모든 네트워크 전송은 HTTPS/TLS 암호화를 사용합니다. 사용자 데이터베이스를 유지하지 않으며 번역 내용이나 개인 정보를 저장하지 않습니다.</p>
+
+    <h2>제3자 서비스</h2>
+    <p>Translay는 다음 제3자 서비스를 이용합니다:</p>
+    <ul>
+      <li>DeepL — 번역 서비스</li>
+      <li>Apple iCloud — 이용 횟수 동기화</li>
+      <li>Cloudflare — API 프록시 및 보안</li>
+    </ul>
+
+    <h2>아동 개인정보</h2>
+    <p>Translay는 13세 미만 아동을 대상으로 하지 않으며 아동의 개인 정보를 의도적으로 수집하지 않습니다.</p>
+
+    <h2>변경</h2>
+    <p>본 개인정보 처리방침은 수시로 업데이트될 수 있습니다. 업데이트된 방침은 이 페이지에 게시됩니다.</p>
+
+    <h2>문의</h2>
+    <p>본 개인정보 처리방침에 대해 질문이 있으시면 다음으로 연락해 주세요: <a href="mailto:support@translay.app" class="text-blue-primary hover:underline">support@translay.app</a></p>
+  </LegalPage>
+  <Footer lang={lang} footer={i.footer} />
+</BaseLayout>

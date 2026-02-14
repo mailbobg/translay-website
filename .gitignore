@@ -1,0 +1,22 @@
+# build output
+dist/
+
+# dependencies
+node_modules/
+
+# environment
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# generated files
+generate_canvas.py
+translay-design-canvas.png
+.astro/

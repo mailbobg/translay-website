@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import LegalPage from '../../components/LegalPage.astro';
+import Footer from '../../components/Footer.astro';
+import { t } from '../../i18n/index';
+
+const lang = 'zh';
+const i = t(lang);
+---
+
+<BaseLayout title="使用条款 — Translay" description="Translay 使用条款" lang={lang}>
+  <Navbar lang={lang} nav={i.nav} />
+  <LegalPage title="使用条款" lastUpdated="最后更新: 2026年2月">
+    <h2>接受条款</h2>
+    <p>使用 Translay 应用程序即表示您同意本使用条款。如果您不同意这些条款，请停止使用本应用。</p>
+
+    <h2>服务说明</h2>
+    <p>Translay 是一款屏幕翻译应用，通过截屏识别文字并提供翻译。翻译结果仅供参考，我们不对翻译的准确性作出保证。</p>
+
+    <h2>免费与付费服务</h2>
+    <p>Translay 提供免费版和 Pro 付费版。免费版每天提供有限次数的翻译和 AI 问答。Pro 版通过 Apple 应用内购买订阅，提供无限使用。</p>
+    <ul>
+      <li>订阅以年为周期自动续期</li>
+      <li>取消订阅请在当前周期结束前 24 小时通过 Apple ID 设置操作</li>
+      <li>退款政策遵循 Apple App Store 规定</li>
+    </ul>
+
+    <h2>使用限制</h2>
+    <p>您同意不会：</p>
+    <ul>
+      <li>以任何方式滥用或干扰本服务</li>
+      <li>尝试绕过免费使用限制</li>
+      <li>将服务用于任何违法目的</li>
+    </ul>
+
+    <h2>免责声明</h2>
+    <p>Translay 按「现状」提供。翻译结果由第三方翻译引擎生成，可能不完全准确。我们不对因使用翻译结果而造成的任何损失承担责任。</p>
+
+    <h2>知识产权</h2>
+    <p>Translay 的商标、设计和代码归其所有者所有。用户通过应用翻译的内容，其知识产权归原始内容所有者所有。</p>
+
+    <h2>条款变更</h2>
+    <p>我们保留随时修改本条款的权利。修改后继续使用本服务即表示您接受修改后的条款。</p>
+
+    <h2>联系方式</h2>
+    <p>如有疑问，请联系：<a href="mailto:support@translay.app" class="text-blue-primary hover:underline">support@translay.app</a></p>
+  </LegalPage>
+  <Footer lang={lang} footer={i.footer} />
+</BaseLayout>

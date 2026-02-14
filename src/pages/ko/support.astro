@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import SupportContent from '../../components/SupportContent.astro';
+import Footer from '../../components/Footer.astro';
+import { t } from '../../i18n/index';
+
+const lang = 'ko';
+const i = t(lang);
+---
+
+<BaseLayout title="지원 — Translay" description="Translay 도움말 및 자주 묻는 질문" lang={lang}>
+  <Navbar lang={lang} nav={i.nav} />
+  <SupportContent lang={lang} support_page={i.support_page} />
+  <Footer lang={lang} footer={i.footer} />
+</BaseLayout>

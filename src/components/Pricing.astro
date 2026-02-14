@@ -1,0 +1,90 @@
+---
+interface PricingPlan {
+  name: string;
+  features: string[];
+  price: string;
+  cta: string;
+  badge?: string;
+  period?: string;
+}
+
+interface Props {
+  label: string;
+  free: PricingPlan;
+  pro: PricingPlan;
+}
+
+const { label, free, pro } = Astro.props;
+---
+
+<section id="pricing" class="py-24 lg:py-32">
+  <div class="mx-auto max-w-6xl px-6">
+    <div data-reveal class="mb-16">
+      <span class="text-xs font-mono tracking-widest text-text-ghost uppercase">{label}</span>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6 max-w-3xl">
+      <!-- Free plan -->
+      <div data-reveal class="relative p-8 rounded-2xl border border-white/5 bg-white/[0.02]">
+        <h3 class="text-2xl font-bold mb-6">{free.name}</h3>
+
+        <ul class="space-y-3 mb-8">
+          {free.features.map((f) => (
+            <li class="flex items-center gap-3 text-sm text-text-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-text-ghost shrink-0">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+              {f}
+            </li>
+          ))}
+        </ul>
+
+        <div class="mb-6">
+          <span class="text-4xl font-bold">{free.price}</span>
+        </div>
+
+        <a
+          href="#"
+          class="inline-flex items-center justify-center w-full py-3 rounded-full border border-white/10 text-sm font-medium hover:bg-white/5 transition-all"
+        >
+          {free.cta}
+        </a>
+      </div>
+
+      <!-- Pro plan -->
+      <div data-reveal class="relative p-8 rounded-2xl border border-border-blue bg-blue-primary/[0.04] glow-blue" style="transition-delay: 0.1s">
+        <!-- Badge -->
+        <div class="absolute top-6 right-6">
+          <span class="text-[10px] font-mono font-bold tracking-widest bg-blue-primary text-white px-3 py-1 rounded-full">
+            {pro.badge}
+          </span>
+        </div>
+
+        <h3 class="text-2xl font-bold mb-6">{pro.name}</h3>
+
+        <ul class="space-y-3 mb-8">
+          {pro.features.map((f) => (
+            <li class="flex items-center gap-3 text-sm text-text-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-primary shrink-0">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+              {f}
+            </li>
+          ))}
+        </ul>
+
+        <div class="mb-6">
+          <span class="text-4xl font-bold">{pro.price}</span>
+          {pro.period && <span class="text-sm text-text-ghost ml-1">{pro.period}</span>}
+        </div>
+
+        <a
+          href="#"
+          class="inline-flex items-center justify-center w-full py-3 rounded-full bg-blue-primary hover:bg-blue-primary/90 text-sm font-semibold transition-all hover:shadow-lg hover:shadow-blue-primary/20"
+        >
+          {pro.cta}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

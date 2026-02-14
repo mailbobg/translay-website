@@ -1,0 +1,120 @@
+{
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "support": "Support"
+  },
+  "hero": {
+    "title_1": "Translate any screen.",
+    "title_2": "Stay where you are.",
+    "subtitle": "Screenshot · Translate · 2 seconds · Done",
+    "cta": "Download Free",
+    "cta_sub": "iOS 16+  ·  5 free translations per day"
+  },
+  "how": {
+    "label": "HOW IT WORKS",
+    "steps": [
+      {
+        "num": "01",
+        "title": "Tap the back",
+        "desc": "Double-tap your iPhone's back to capture a screenshot instantly"
+      },
+      {
+        "num": "02",
+        "title": "AI translates",
+        "desc": "OCR detects text, DeepL engine delivers precise translations"
+      },
+      {
+        "num": "03",
+        "title": "Read & ask",
+        "desc": "Translation overlays the original. Ask AI for deeper understanding"
+      }
+    ]
+  },
+  "features": {
+    "label": "FEATURES",
+    "items": [
+      {
+        "title": "Immersive overlay",
+        "desc": "Translation covers original text precisely, preserving the interface layout"
+      },
+      {
+        "title": "15+ languages",
+        "desc": "Chinese, Japanese, Korean, Russian, German, French, Spanish & more"
+      },
+      {
+        "title": "AI deep questions",
+        "desc": "Beyond translation — ask follow-up questions to understand context deeply"
+      },
+      {
+        "title": "Privacy first",
+        "desc": "OCR runs entirely on-device. No images leave your phone. Ever"
+      }
+    ]
+  },
+  "pricing": {
+    "label": "PRICING",
+    "free": {
+      "name": "Free",
+      "features": ["5 translations / day", "5 AI questions / day", "All 15+ languages"],
+      "price": "$0",
+      "cta": "Download Free"
+    },
+    "pro": {
+      "name": "Pro",
+      "badge": "PRO",
+      "features": ["Unlimited translations", "Unlimited AI questions", "Priority server"],
+      "price": "TBD",
+      "period": "/year",
+      "cta": "Upgrade to Pro"
+    }
+  },
+  "statement": {
+    "line1": "The interface",
+    "line2": "should be invisible.",
+    "sub": "Users should feel like they're using magic, not software."
+  },
+  "footer": {
+    "support": "Support",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "copyright": "© 2026 Translay. Translate any screen."
+  },
+  "support_page": {
+    "title": "Support Center",
+    "setup_title": "Quick Setup",
+    "setup_steps": [
+      "Download Translay from the App Store",
+      "Open Translay and select your target language",
+      "Go to Settings → Accessibility → Touch → Back Tap",
+      "Set \"Double Tap\" to the Translay shortcut",
+      "In any app, double-tap the back of your iPhone to translate"
+    ],
+    "faq_title": "Frequently Asked Questions",
+    "faqs": [
+      {
+        "q": "Translation isn't accurate?",
+        "a": "Translay uses the DeepL translation engine for high-quality translations across 15+ languages. Try the AI follow-up feature for more accurate understanding."
+      },
+      {
+        "q": "Which languages are supported?",
+        "a": "Chinese, English, Japanese, Korean, Russian, German, French, Spanish, and 15+ mainstream languages with more being added."
+      },
+      {
+        "q": "Free quota used up?",
+        "a": "The free version provides 5 translations and 5 AI questions per day. Quotas reset daily. Upgrade to Pro for unlimited use."
+      },
+      {
+        "q": "Translation not responding?",
+        "a": "Please check: 1) Network connection 2) Back Tap shortcut is set correctly 3) Try reopening the Translay app."
+      },
+      {
+        "q": "How to cancel subscription?",
+        "a": "Go to iPhone Settings → Apple ID → Subscriptions to manage or cancel your Translay Pro subscription."
+      }
+    ],
+    "contact_title": "Contact Us",
+    "contact_desc": "For other questions, reach out via email:",
+    "contact_email": "support@translay.app"
+  }
+}

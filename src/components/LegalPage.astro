@@ -1,0 +1,18 @@
+---
+interface Props {
+  title: string;
+  lastUpdated: string;
+}
+
+const { title, lastUpdated } = Astro.props;
+---
+
+<section class="pt-32 pb-24">
+  <div class="mx-auto max-w-3xl px-6">
+    <h1 class="text-3xl font-bold mb-2">{title}</h1>
+    <p class="text-xs text-text-ghost mb-12 font-mono">{lastUpdated}</p>
+    <div class="prose prose-invert prose-sm max-w-none text-text-secondary leading-relaxed [&_h2]:text-text-primary [&_h2]:text-lg [&_h2]:font-semibold [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-text-primary [&_h3]:text-base [&_h3]:font-medium [&_h3]:mt-6 [&_h3]:mb-3 [&_p]:mb-4 [&_ul]:space-y-2 [&_li]:text-text-secondary">
+      <slot />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/* ─── Translucent Meridian Design System ─── */
+
+@theme {
+  --color-bg-deep: #0A0A0F;
+  --color-bg-card: #12121A;
+  --color-bg-card-hover: #1A1A28;
+  --color-blue-primary: #007AFF;
+  --color-blue-light: #4DA3FF;
+  --color-blue-glow: #0050B4;
+  --color-blue-subtle: rgba(0, 122, 255, 0.08);
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #B4B4C0;
+  --color-text-ghost: #64647A;
+  --color-border: #1E1E2E;
+  --color-border-blue: rgba(0, 122, 255, 0.25);
+
+  --font-sans: "Inter", "SF Pro Display", -apple-system, "PingFang SC", "Hiragino Sans", "Apple SD Gothic Neo", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", system-ui, sans-serif;
+  --font-mono: "GeistMono", "SF Mono", "JetBrains Mono", monospace;
+}
+
+/* ─── Base ─── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg-deep);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Selection ─── */
+
+::selection {
+  background: rgba(0, 122, 255, 0.3);
+  color: white;
+}
+
+/* ─── Animations ─── */
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out both;
+}
+
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-400 { animation-delay: 0.4s; }
+.animate-delay-500 { animation-delay: 0.5s; }
+
+/* ─── Scroll reveal ─── */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Glow effects ─── */
+
+.glow-blue {
+  box-shadow: 0 0 80px 20px rgba(0, 122, 255, 0.08);
+}
+
+.glow-blue-strong {
+  box-shadow: 0 0 120px 40px rgba(0, 122, 255, 0.12);
+}
