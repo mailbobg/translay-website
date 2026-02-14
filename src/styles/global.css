@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- 动画用 CSS 变量（顺滑、防生硬）--- */
+:root {
+  --ease-out-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-soft-bounce: cubic-bezier(0.34, 1.2, 0.64, 1);
+  --duration-hero: 1s;
+  --duration-sub: 0.85s;
+  --duration-card: 0.8s;
+  --duration-step: 0.75s;
+  --duration-cta: 0.6s;
+}
+
+/* 滚动入场：初始状态（未进入视口） */
+.animate-in-view {
+  opacity: 0.5;
+  transform: translateY(24px);
+  transition:
+    transform 0.75s var(--ease-out-smooth),
+    opacity 0.75s var(--ease-out-smooth);
+}
+
+.animate-in-view.hero-title {
+  opacity: 0.5;
+  transform: translateY(32px) scale(0.98);
+  transition: transform var(--duration-hero) var(--ease-out-smooth), opacity var(--duration-hero) var(--ease-out-smooth);
+}
+
+.animate-in-view.hero-sub {
+  opacity: 0.5;
+  transform: translateY(20px);
+  transition: transform var(--duration-sub) var(--ease-out-smooth), opacity var(--duration-sub) var(--ease-out-smooth);
+  transition-delay: 0.25s;
+}
+
+.animate-in-view.hero-mockup {
+  opacity: 0.6;
+  transform: translateY(40px);
+  transition: transform 1.1s var(--ease-out-smooth), opacity 1.1s var(--ease-out-smooth);
+}
+
+.animate-in-view.hero-cta {
+  opacity: 0.6;
+  transition: opacity var(--duration-cta) var(--ease-out-smooth);
+  transition-delay: 0.55s;
+}
+
+.animate-in-view.step-card {
+  transition: transform var(--duration-step) var(--ease-out-smooth), opacity var(--duration-step) var(--ease-out-smooth);
+}
+
+.animate-in-view.feature-card {
+  opacity: 0.5;
+  transform: translateY(36px);
+  transition: transform var(--duration-card) var(--ease-out-smooth), opacity var(--duration-card) var(--ease-out-smooth);
+}
+
+.animate-in-view.use-case-card {
+  opacity: 0.55;
+  transform: translateY(28px);
+  transition: transform 0.75s var(--ease-out-smooth), opacity 0.75s var(--ease-out-smooth);
+}
+
+.animate-in-view.pricing-item {
+  opacity: 0.6;
+  transform: translateY(16px);
+  transition: transform 0.6s var(--ease-out-smooth), opacity 0.6s var(--ease-out-smooth);
+}
+
+/* 进入视口后的目标状态 */
+.animate-in-view.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.animate-in-view.hero-cta.in-view {
+  opacity: 1;
+}
+
+/* Stagger 延迟（错落，不等间隔） */
+.animate-in-view.step-card[data-stagger="0"] { transition-delay: 0ms; }
+.animate-in-view.step-card[data-stagger="1"] { transition-delay: 150ms; }
+.animate-in-view.step-card[data-stagger="2"] { transition-delay: 330ms; }
+
+.animate-in-view.feature-card[data-stagger="0"] { transition-delay: 0ms; }
+.animate-in-view.feature-card[data-stagger="1"] { transition-delay: 140ms; }
+.animate-in-view.feature-card[data-stagger="2"] { transition-delay: 280ms; }
+.animate-in-view.feature-card[data-stagger="3"] { transition-delay: 400ms; }
+
+.animate-in-view.use-case-card[data-stagger="0"] { transition-delay: 0ms; }
+.animate-in-view.use-case-card[data-stagger="1"] { transition-delay: 100ms; }
+.animate-in-view.use-case-card[data-stagger="2"] { transition-delay: 280ms; }
+.animate-in-view.use-case-card[data-stagger="3"] { transition-delay: 400ms; }
+
+.animate-in-view.pricing-item[data-stagger="0"] { transition-delay: 0ms; }
+.animate-in-view.pricing-item[data-stagger="1"] { transition-delay: 120ms; }
+.animate-in-view.pricing-item[data-stagger="2"] { transition-delay: 320ms; }
+
+/* Hero 手机 mockup 浮动（循环、顺滑） */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.hero-mockup-float {
+  animation: float 5.5s ease-in-out infinite;
+}
+
+/* 背景渐变缓慢流动 */
+@keyframes bg-drift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.bg-hero-gradient {
+  background: linear-gradient(135deg, #0051D5 0%, #007AFF 40%, #0051D5 100%);
+  background-size: 200% 200%;
+  animation: bg-drift 18s ease-in-out infinite;
+}
+
+/* 减少动效时：只保留透明度 */
+@media (prefers-reduced-motion: reduce) {
+  .animate-in-view,
+  .animate-in-view.hero-title,
+  .animate-in-view.hero-sub,
+  .animate-in-view.hero-mockup,
+  .animate-in-view.hero-cta,
+  .animate-in-view.step-card,
+  .animate-in-view.feature-card,
+  .animate-in-view.use-case-card,
+  .animate-in-view.pricing-item {
+    transform: none !important;
+    transition: opacity 0.5s var(--ease-out-smooth) !important;
+    transition-delay: 0ms !important;
+  }
+  .hero-mockup-float {
+    animation: none;
+  }
+  .bg-hero-gradient {
+    animation: none;
+  }
+}
+
+/* 卡片悬停（柔和） */
+.card-hover {
+  transition: transform 0.32s ease-out, box-shadow 0.32s ease-out;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -16px rgba(0, 81, 213, 0.2);
+}
+
+/* CTA 按钮悬停 */
+.cta-hover {
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+.cta-hover:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 28px -8px rgba(0, 122, 255, 0.4);
+}

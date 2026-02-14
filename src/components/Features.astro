@@ -1,0 +1,26 @@
+---
+const features = [
+  { icon: '🌐', title: '沉浸式翻译', desc: '译文覆盖原文，保留原始布局' },
+  { icon: '✨', title: 'AI 深度追问', desc: '基于翻译内容，智能问答' },
+  { icon: '🗣️', title: '15+ 语言', desc: '中日韩英俄德法西等主流语言' },
+  { icon: '⚡', title: '2 秒完成', desc: '从截屏到结果，无需切换 App' },
+];
+---
+
+<section class="py-24 px-6 bg-bg-light">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold text-center text-text-main mb-16 animate-in-view feature-card" data-stagger="0">核心功能</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {features.map((f, i) => (
+        <div
+          class="animate-in-view feature-card card-hover rounded-card-xl bg-bg-gray p-6 border border-gray-200/60"
+          data-stagger={i}
+        >
+          <span class="text-3xl mb-4 block" aria-hidden="true">{f.icon}</span>
+          <h3 class="text-lg font-semibold text-text-main mb-2">{f.title}</h3>
+          <p class="text-text-muted text-sm">{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

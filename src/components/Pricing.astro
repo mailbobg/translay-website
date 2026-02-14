@@ -1,0 +1,41 @@
+---
+const free = { name: '免费', trans: '5 次', ai: '5 次', lang: '全部', price: '免费' };
+const pro = { name: 'Pro', trans: '无限', ai: '无限', lang: '全部', price: '$XX.XX/年' };
+---
+
+<section class="py-24 px-6 bg-bg-light">
+  <div class="max-w-2xl mx-auto">
+    <h2 class="text-3xl font-bold text-center text-text-main mb-12 animate-in-view pricing-item" data-stagger="0">定价</h2>
+    <div class="grid grid-cols-2 gap-6 mb-10">
+      <div
+        class="animate-in-view pricing-item rounded-card-xl bg-bg-gray p-6 border border-gray-200/80 text-center"
+        data-stagger="0"
+      >
+        <h3 class="text-lg font-semibold text-text-main mb-4">{free.name}</h3>
+        <ul class="text-sm text-text-muted space-y-2">
+          <li>翻译 {free.trans}</li>
+          <li>AI 问答 {free.ai}</li>
+          <li>语言 {free.lang}</li>
+        </ul>
+        <p class="mt-4 font-semibold text-text-main">{free.price}</p>
+      </div>
+      <div
+        class="animate-in-view pricing-item rounded-card-xl bg-primary/5 border-2 border-primary/20 p-6 text-center"
+        data-stagger="1"
+      >
+        <h3 class="text-lg font-semibold text-primary mb-4">{pro.name}</h3>
+        <ul class="text-sm text-text-muted space-y-2">
+          <li>翻译 {pro.trans}</li>
+          <li>AI 问答 {pro.ai}</li>
+          <li>语言 {pro.lang}</li>
+        </ul>
+        <p class="mt-4 font-semibold text-primary">{pro.price}</p>
+      </div>
+    </div>
+    <p class="text-center animate-in-view pricing-item cta-hover" data-stagger="2">
+      <a href="#" class="inline-block px-8 py-4 bg-primary text-white font-semibold rounded-2xl shadow-lg">
+        免费下载，立即体验
+      </a>
+    </p>
+  </div>
+</section>
