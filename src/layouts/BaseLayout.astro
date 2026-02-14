@@ -140,6 +140,11 @@ const alternateLocales = Object.entries(langMeta)
     <title>{title}</title>
   </head>
   <body class="min-h-screen bg-bg-deep text-text-primary antialiased">
+    <!-- Scroll progress bar -->
+    <div class="fixed top-0 left-0 right-0 z-[100] h-[2px]">
+      <div id="scroll-progress" class="h-full bg-gradient-to-r from-blue-primary via-blue-light to-blue-primary w-0 transition-none" style="box-shadow: 0 0 10px rgba(0,122,255,0.5);"></div>
+    </div>
+
     <slot />
 
     <!-- noscript fallback: show content when JS disabled -->
@@ -152,10 +157,10 @@ const alternateLocales = Object.entries(langMeta)
       </style>
     </noscript>
 
-    <!-- Animation engine -->
+    <!-- Animation engine — BOLD Edition -->
     <script>
       function initAnimations() {
-        // ── Scroll reveal observer ──
+        // ── Scroll reveal observer (with bigger trigger area) ──
         const revealObserver = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
@@ -165,11 +170,28 @@ const alternateLocales = Object.entries(langMeta)
               }
             });
           },
-          { threshold: 0.08, rootMargin: '0px 0px -60px 0px' }
+          { threshold: 0.06, rootMargin: '0px 0px -80px 0px' }
         );
 
         document.querySelectorAll('[data-reveal]').forEach((el) => {
           revealObserver.observe(el);
+        });
+
+        // ── Section line reveal observer ──
+        const lineObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                lineObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        document.querySelectorAll('.section-line').forEach((el) => {
+          lineObserver.observe(el);
         });
 
         // ── Stagger children observer ──
@@ -215,6 +237,59 @@ const alternateLocales = Object.entries(langMeta)
               });
               ticking = true;
             }
+          }, { passive: true });
+        }
+
+        // ── 3D Tilt effect for [data-tilt] elements ──
+        document.querySelectorAll('[data-tilt]').forEach((el) => {
+          const card = el as HTMLElement;
+          const maxTilt = parseFloat(card.dataset.tiltMax || '10');
+
+          card.addEventListener('mousemove', (e: Event) => {
+            const me = e as MouseEvent;
+            const rect = card.getBoundingClientRect();
+            const x = me.clientX - rect.left;
+            const y = me.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = ((y - centerY) / centerY) * -maxTilt;
+            const rotateY = ((x - centerX) / centerX) * maxTilt;
+
+            card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+          });
+
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)';
+          });
+        });
+
+        // ── Magnetic hover for buttons ──
+        document.querySelectorAll('.magnetic-hover').forEach((el) => {
+          const btn = el as HTMLElement;
+
+          btn.addEventListener('mousemove', (e: Event) => {
+            const me = e as MouseEvent;
+            const rect = btn.getBoundingClientRect();
+            const x = me.clientX - rect.left - rect.width / 2;
+            const y = me.clientY - rect.top - rect.height / 2;
+
+            btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) scale(1.05)`;
+          });
+
+          btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0, 0) scale(1)';
+          });
+        });
+
+        // ── Smooth scroll progress indicator ──
+        const progressBar = document.getElementById('scroll-progress');
+        if (progressBar) {
+          window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            (progressBar as HTMLElement).style.width = `${progress}%`;
           }, { passive: true });
         }
       }

@@ -25,27 +25,37 @@ const heroAlt = heroAlts[lang] || heroAlts.en;
 ---
 
 <section class="relative min-h-screen flex items-center overflow-hidden pt-16">
-  <!-- Background glows (parallax) -->
-  <div data-parallax="-0.12" class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-blue-primary/5 blur-[120px] pointer-events-none"></div>
-  <div data-parallax="0.08" class="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-blue-primary/3 blur-[100px] pointer-events-none"></div>
+  <!-- Background glows (parallax) — bigger, more dramatic -->
+  <div data-parallax="-0.15" class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full bg-blue-primary/6 blur-[160px] pointer-events-none"></div>
+  <div data-parallax="0.10" class="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full bg-blue-primary/4 blur-[140px] pointer-events-none"></div>
+  <div data-parallax="0.05" class="absolute top-1/3 -left-40 w-[400px] h-[400px] rounded-full bg-blue-glow/5 blur-[120px] pointer-events-none"></div>
+
+  <!-- Floating particles -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-[15%] left-[10%] w-1.5 h-1.5 rounded-full bg-blue-light/20 animate-float" style="animation-delay: 0s; animation-duration: 5s;"></div>
+    <div class="absolute top-[25%] right-[15%] w-1 h-1 rounded-full bg-blue-light/30 animate-float" style="animation-delay: 1.5s; animation-duration: 7s;"></div>
+    <div class="absolute bottom-[30%] left-[20%] w-2 h-2 rounded-full bg-blue-primary/15 animate-float" style="animation-delay: 0.8s; animation-duration: 6s;"></div>
+    <div class="absolute top-[60%] right-[25%] w-1 h-1 rounded-full bg-blue-light/25 animate-float" style="animation-delay: 2s; animation-duration: 8s;"></div>
+    <div class="absolute bottom-[15%] right-[10%] w-1.5 h-1.5 rounded-full bg-blue-primary/20 animate-float" style="animation-delay: 3s; animation-duration: 6.5s;"></div>
+  </div>
 
   <div class="mx-auto max-w-6xl px-6 w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center py-20 lg:py-0">
     <!-- Text content -->
     <div class="space-y-8">
       <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.08] tracking-tight">
         <span class="animate-fade-in-up block">{title_1}</span>
-        <span class="animate-fade-in-up animate-delay-200 block text-blue-light">{title_2}</span>
+        <span class="animate-fade-in-up animate-delay-300 block text-blue-light hero-glow-text">{title_2}</span>
       </h1>
 
-      <p class="animate-fade-in-up animate-delay-300 text-lg sm:text-xl text-text-secondary max-w-md">
+      <p class="animate-fade-in-up animate-delay-400 text-lg sm:text-xl text-text-secondary max-w-md">
         {subtitle}
       </p>
 
       <!-- App Store badge -->
-      <div class="animate-fade-in-up animate-delay-400 flex flex-col sm:flex-row items-start gap-4">
+      <div class="animate-fade-in-up animate-delay-500 flex flex-col sm:flex-row items-start gap-4">
         <a
           href="#"
-          class="inline-block transition-transform hover:scale-105 active:scale-[0.98]"
+          class="magnetic-hover inline-block transition-transform hover:scale-110 active:scale-[0.95]"
           aria-label="Download on the App Store"
         >
           <img
@@ -58,18 +68,18 @@ const heroAlt = heroAlts[lang] || heroAlts.en;
         </a>
       </div>
 
-      <p class="animate-fade-in-up animate-delay-500 text-xs font-mono text-text-ghost">
+      <p class="animate-fade-in-up animate-delay-600 text-xs font-mono text-text-ghost">
         {cta_sub}
       </p>
     </div>
 
-    <!-- iPhone mockup with real screenshot -->
-    <div class="animate-fade-in animate-delay-300 relative flex justify-center lg:justify-end">
-      <div class="relative animate-float">
+    <!-- iPhone mockup with real screenshot — 3D perspective + shine -->
+    <div class="animate-fade-in-up animate-delay-200 relative flex justify-center lg:justify-end" style="perspective: 1200px;">
+      <div class="relative animate-float" data-tilt data-tilt-max="12">
         <!-- iPhone device frame -->
-        <div class="relative w-[280px] sm:w-[300px] mx-auto">
+        <div class="relative w-[280px] sm:w-[300px] mx-auto shine-overlay">
           <!-- Outer frame -->
-          <div class="relative rounded-[3rem] border-[6px] border-[#1a1a2e] bg-[#1a1a2e] shadow-2xl shadow-black/40 overflow-hidden">
+          <div class="relative rounded-[3rem] border-[6px] border-[#1a1a2e] bg-[#1a1a2e] shadow-2xl shadow-black/50 overflow-hidden">
             <!-- Dynamic Island notch -->
             <div class="absolute top-0 left-1/2 -translate-x-1/2 z-20 w-[100px] h-[28px] bg-[#1a1a2e] rounded-b-2xl"></div>
 
@@ -85,9 +95,19 @@ const heroAlt = heroAlts[lang] || heroAlts.en;
             <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-[120px] h-[4px] bg-white/20 rounded-full z-20"></div>
           </div>
 
-          <!-- Glow behind phone -->
-          <div class="absolute -inset-8 bg-blue-primary/8 rounded-full blur-3xl -z-10"></div>
+          <!-- Glow behind phone — bigger, animated -->
+          <div class="absolute -inset-12 bg-blue-primary/10 rounded-full blur-[60px] -z-10 glow-blue-breathe"></div>
+          <div class="absolute -inset-20 bg-blue-glow/5 rounded-full blur-[80px] -z-20"></div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-in animate-delay-800">
+    <div class="flex flex-col items-center gap-2 text-text-ghost/50">
+      <div class="w-5 h-8 rounded-full border border-white/10 flex items-start justify-center p-1.5">
+        <div class="w-1 h-2 bg-white/30 rounded-full animate-bounce"></div>
       </div>
     </div>
   </div>

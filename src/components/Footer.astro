@@ -14,18 +14,21 @@ interface Props {
 const { lang, footer } = Astro.props;
 ---
 
-<footer class="border-t border-white/5 py-12">
-  <div class="mx-auto max-w-6xl px-6">
+<footer class="border-t border-white/5 py-12 relative overflow-hidden" data-reveal="blur">
+  <!-- Subtle background glow -->
+  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-blue-primary/3 blur-[120px] pointer-events-none"></div>
+
+  <div class="mx-auto max-w-6xl px-6 relative">
     <div class="flex flex-col gap-8">
       <!-- Top: Logo + App Store badge -->
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-        <a href={`/${lang}/`} class="flex items-center gap-2">
+        <a href={`/${lang}/`} class="flex items-center gap-2 group">
           <img
             src="/logo.svg"
             alt="Translay"
             width="24"
             height="24"
-            class="w-6 h-6 rounded-md"
+            class="w-6 h-6 rounded-md transition-transform group-hover:scale-110"
           />
           <span class="text-sm font-semibold tracking-[0.02em]">
             <span class="text-text-secondary">trans</span><span class="text-blue-light/70">lay</span>
@@ -34,7 +37,7 @@ const { lang, footer } = Astro.props;
 
         <a
           href="#"
-          class="inline-block transition-transform hover:scale-105"
+          class="magnetic-hover inline-block transition-transform hover:scale-110"
           aria-label="Download on the App Store"
         >
           <img
@@ -51,9 +54,9 @@ const { lang, footer } = Astro.props;
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-4 border-t border-white/5">
         <span class="text-xs text-text-ghost">{footer.copyright}</span>
         <div class="flex items-center gap-6">
-          <a href={`/${lang}/support`} class="text-xs text-text-ghost hover:text-text-secondary transition-colors">{footer.support}</a>
-          <a href={`/${lang}/privacy`} class="text-xs text-text-ghost hover:text-text-secondary transition-colors">{footer.privacy}</a>
-          <a href={`/${lang}/terms`} class="text-xs text-text-ghost hover:text-text-secondary transition-colors">{footer.terms}</a>
+          <a href={`/${lang}/support`} class="text-xs text-text-ghost hover:text-blue-light/70 transition-colors duration-300">{footer.support}</a>
+          <a href={`/${lang}/privacy`} class="text-xs text-text-ghost hover:text-blue-light/70 transition-colors duration-300">{footer.privacy}</a>
+          <a href={`/${lang}/terms`} class="text-xs text-text-ghost hover:text-blue-light/70 transition-colors duration-300">{footer.terms}</a>
         </div>
       </div>
     </div>

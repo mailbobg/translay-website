@@ -25,20 +25,20 @@ const icons = [
 
 <section id="how-it-works" class="py-24 lg:py-32">
   <div class="mx-auto max-w-6xl px-6">
-    <div data-reveal class="mb-16">
+    <div data-reveal class="mb-16 section-line">
       <h2 class="text-xs font-mono tracking-widest text-text-ghost uppercase">{label}</h2>
     </div>
 
     <div data-stagger class="grid md:grid-cols-3 gap-8 lg:gap-12">
       {steps.map((step, i) => (
-        <div class="group relative">
-          <!-- Card -->
-          <div class="relative p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/10 transition-all duration-500 hover-lift">
-            <!-- Step number -->
-            <span class="text-5xl font-bold text-blue-primary/40 group-hover:text-blue-primary/60 transition-colors">{step.num}</span>
+        <div class="group relative" style="perspective: 800px;">
+          <!-- Card with 3D tilt -->
+          <div class="relative p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-blue-primary/20 transition-all duration-500 hover-lift tilt-card" data-tilt data-tilt-max="8">
+            <!-- Step number — big and bold -->
+            <span class="text-6xl font-black text-blue-primary/20 group-hover:text-blue-primary/50 transition-all duration-500 group-hover:scale-110 inline-block">{step.num}</span>
 
-            <!-- Icon -->
-            <div class="mt-4 mb-4 text-blue-light/70" set:html={icons[i]} />
+            <!-- Icon with pulse on hover -->
+            <div class="mt-4 mb-4 text-blue-light/70 group-hover:text-blue-light transition-colors duration-500" set:html={icons[i]} />
 
             <!-- Title -->
             <h3 class="text-xl font-semibold mb-3">{step.title}</h3>
@@ -48,20 +48,26 @@ const icons = [
 
             <!-- Optional screenshot thumbnail -->
             {step.screenshot && (
-              <div class="mt-6 rounded-xl overflow-hidden border border-white/5">
+              <div class="mt-6 rounded-xl overflow-hidden border border-white/5 group-hover:border-blue-primary/15 transition-colors">
                 <img
                   src={step.screenshot}
                   alt={step.title}
-                  class="w-full h-auto opacity-80 group-hover:opacity-100 transition-opacity"
+                  class="w-full h-auto opacity-70 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700"
                   loading="lazy"
                 />
               </div>
             )}
+
+            <!-- Card glow on hover -->
+            <div class="absolute inset-0 rounded-2xl bg-blue-primary/0 group-hover:bg-blue-primary/[0.02] transition-colors duration-500 pointer-events-none"></div>
           </div>
 
-          {/* Connector line between cards */}
+          {/* Connector line between cards — animated glow */}
           {i < steps.length - 1 && (
-            <div class="hidden md:block absolute top-1/2 -right-6 lg:-right-6 w-8 lg:w-12 h-px bg-gradient-to-r from-white/10 to-transparent"></div>
+            <div class="hidden md:block absolute top-1/2 -right-6 lg:-right-6 w-8 lg:w-12">
+              <div class="h-px bg-gradient-to-r from-blue-primary/20 via-blue-light/30 to-transparent"></div>
+              <div class="h-px mt-px bg-gradient-to-r from-blue-primary/5 via-blue-light/10 to-transparent blur-sm"></div>
+            </div>
           )}
         </div>
       ))}

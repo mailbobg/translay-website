@@ -29,11 +29,11 @@ const icons = [
 
 <section id="features" class="py-24 lg:py-32">
   <div class="mx-auto max-w-6xl px-6">
-    <div data-reveal class="mb-20">
+    <div data-reveal class="mb-20 section-line">
       <h2 class="text-xs font-mono tracking-widest text-text-ghost uppercase">{label}</h2>
     </div>
 
-    <div class="space-y-24 lg:space-y-32">
+    <div class="space-y-32 lg:space-y-40">
       {items.map((item, i) => {
         const isReversed = i % 2 === 1;
         const hasScreenshot = !!item.screenshot;
@@ -52,14 +52,14 @@ const icons = [
               data-reveal={hasScreenshot ? textDirection : ''}
               class:list={[hasScreenshot && isReversed && "lg:order-2"]}
             >
-              <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-blue-primary/10 text-blue-light mb-6">
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-primary/10 text-blue-light mb-6 group-hover:scale-110 transition-transform duration-500">
                 <Fragment set:html={icons[i]} />
               </div>
-              <h3 class="text-2xl sm:text-3xl font-bold mb-4">{item.title}</h3>
-              <p class="text-base text-text-secondary leading-relaxed max-w-lg">{item.desc}</p>
+              <h3 class="text-3xl sm:text-4xl font-bold mb-5">{item.title}</h3>
+              <p class="text-base sm:text-lg text-text-secondary leading-relaxed max-w-lg">{item.desc}</p>
             </div>
 
-            {/* Screenshot side */}
+            {/* Screenshot side — with 3D hover */}
             {hasScreenshot && (
               <div
                 data-reveal={imgDirection}
@@ -67,12 +67,15 @@ const icons = [
                   "flex justify-center",
                   isReversed && "lg:order-1"
                 ]}
+                style="perspective: 800px;"
               >
-                <PhoneFrame
-                  src={item.screenshot!}
-                  alt={item.screenshot_alt || item.title}
-                  class="w-[220px] sm:w-[250px]"
-                />
+                <div class="showcase-item">
+                  <PhoneFrame
+                    src={item.screenshot!}
+                    alt={item.screenshot_alt || item.title}
+                    class="w-[220px] sm:w-[260px]"
+                  />
+                </div>
               </div>
             )}
           </div>
