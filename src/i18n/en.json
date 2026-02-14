@@ -155,7 +155,7 @@
       },
       {
         "q": "Free quota used up?",
-        "a": "The free version provides 5 translations and 5 AI questions per day. Quotas reset automatically at midnight. Upgrade to Pro for unlimited use."
+        "a": "The free version provides 5 translations and 5 AI questions. Quotas reset automatically. Upgrade to Pro for unlimited use."
       },
       {
         "q": "Translation not responding?",
