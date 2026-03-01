@@ -163,7 +163,7 @@
       },
       {
         "q": "Is my privacy safe?",
-        "a": "OCR text recognition runs entirely on-device — screenshots are never uploaded to any server. Translation requests use encrypted transmission, and we store no translation content. See our Privacy Policy for full details."
+        "a": "OCR text recognition runs entirely on-device — screenshots are never uploaded to any server. Translation requests use encrypted transmission, and we store no translation content. When you use the AI follow-up feature, your question and translation context are sent to DeepSeek with your consent. See our Privacy Policy for full details."
       },
       {
         "q": "How to cancel subscription?",
